@@ -19,17 +19,17 @@ class MainActivity : AppCompatActivity() {
         var urlStart = "https://www."
         btYou.setOnClickListener {
             urlAddress = urlStart + "youtube.com"
-            Toast.makeText(this@MainActivity,"Searching...",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity,"...Searching...",Toast.LENGTH_SHORT).show()
             wview.loadUrl(urlAddress)
         }
         btFb.setOnClickListener {
             urlAddress = urlStart + "facebook.com"
-            Toast.makeText(this@MainActivity,"Searching...",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity,"...Searching...",Toast.LENGTH_SHORT).show()
             wview.loadUrl(urlAddress)
         }
         btGoogle.setOnClickListener {
             urlAddress = urlStart + "google.com"
-            Toast.makeText(this@MainActivity,"Searching...",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity,"...Searching...",Toast.LENGTH_SHORT).show()
             wview.loadUrl(urlAddress)
         }
     }
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             if(!URLUtil.isNetworkUrl(urlAddr)){
                 urlAddr = "https://www.google.com/search?q="+urlAddr
             }
-            Toast.makeText(this@MainActivity,"Searching...",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity,"...Searching...",Toast.LENGTH_SHORT).show()
             wview.loadUrl(urlAddr)
         }
         else{
