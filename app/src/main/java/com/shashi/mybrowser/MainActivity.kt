@@ -5,7 +5,9 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.webkit.JavascriptInterface
 import android.webkit.URLUtil
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -52,7 +54,12 @@ class MainActivity : AppCompatActivity() {
             urlAddress = urlStart + "google.com"
             wview.loadUrl(urlAddress)
         }
-    }
+        btHtml.setOnClickListener {
+            wview.addJavascriptInterface(this@MainActivity,"LoginHtmlPageOpen")
+            wview.loadUrl("file:///android_asset/login.html")
+            Log.i("MyMsg","The Html button Clicked")
+        }
+    } //onCreate
     fun gotoLink(view : View){
         wview.webViewClient = WebViewClient()
         var urlAddr = etUrl.text.toString()
@@ -65,6 +72,17 @@ class MainActivity : AppCompatActivity() {
         else{
             Toast.makeText(this@MainActivity,"Please enter the link",Toast.LENGTH_SHORT).show()
         }
-
+    }//gotoLink
+    @JavascriptInterface
+    fun login(uName:String,pass:String){
+        Log.i("MyMsg","Function Login is called with the value of uName=$uName and pwd= $pass")
+        if(pass.isEmpty() || uName.isEmpty()){
+            Toast.makeText(this@MainActivity,"Username or password field must not be empty!",Toast.LENGTH_SHORT).show()
+        }
+        else if(pass.equals(uName.toString()+"@123")){
+            Toast.makeText(this@MainActivity,"Login SuccessFul!",Toast.LENGTH_SHORT).show()
+        }
+        else
+            Toast.makeText(this@MainActivity,"Wrong Username or Password! Login Failed!",Toast.LENGTH_SHORT).show()
     }
 }

@@ -94,6 +94,7 @@
             android:id="@+id/btHtml"
             android:layout_marginRight="10sp"
             android:background="@drawable/ic_003_internet"
+            android:onClick="openHtmlPage"
     />
 </LinearLayout>
 
